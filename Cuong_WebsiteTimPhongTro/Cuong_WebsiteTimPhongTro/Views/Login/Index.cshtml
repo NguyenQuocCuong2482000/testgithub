@@ -1,0 +1,54 @@
+﻿@model Cuong_WebsiteTimPhongTro.Models.Customer
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Đăng nhập </h1>
+        </div>
+
+    </div>
+</div>
+
+@{ string contentck;}
+@*thông báo*@
+@if (TempData["check"] != null)
+{
+    <p class="alert alert-danger" id="successMessage">@TempData["check"]</p>
+}
+
+<div class="offset-4 col-4">
+    <form action="" method="post">
+        <img style="float:right" src="~/Content/Images/dangnhap.png" width="270px" height="270px" />
+        <div class="card">
+
+            <div class="card-body-login">
+                <div class="form-group">
+                    <!--name-->
+                    <label for="username">Tên đăng nhập</label>
+                    <input type="text" class="form-control" name="username" id="username" aria-describedby="usernameHid" placeholder="Tên">
+                    <small id="usernameHid" class="form-text text-muted">Yêu cầu nhập tên người dùng</small>
+                </div>
+                <div class="form-group">
+                    <!--password-->
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" class="form-control" name="password" id="password" aria-describedby="passwordHid" placeholder="Mật khẩu">
+                    <small id="passwordHid" class="form-text text-muted">Yêu cầu nhập mật khẩu</small>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label><input type="radio" class="form-check-input" name="remember"> Ghi nhớ tài khoản</label>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                <button class="btn btn-success">Đăng nhập</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+

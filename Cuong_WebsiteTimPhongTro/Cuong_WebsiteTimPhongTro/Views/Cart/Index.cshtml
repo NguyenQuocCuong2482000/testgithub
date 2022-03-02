@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Cuong_WebsiteTimPhongTro.Models.CartItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Danh sách yêu thích</h1>
+        </div>
+
+    </div>
+</div>
+@if (Model == null)
+{
+    <div>Bạn chưa có mục yêu thích nào.</div>
+}
+else
+{
+    int count = 1;
+    <table class="table">
+        <tr>
+            @*<th>Order-Number</th>*@
+            <th>Mã Phòng trọ</th>
+            <th>Tên Phòng trọ</th>
+            <th>Hình ảnh</th>
+            <th>Giá thuê </th>
+            <th>Số tháng thuê</th>
+            <th>Tổng tiền</th>
+        </tr>
+        @{ double total = 0;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td> @count @{count++;}</td>*@
+                <td> @item.product.ProductID</td>
+                <td> @item.product.ProductName</td>
+                <td> <img src="Content/Images/@item.product.Images" width="100px" height="70px" /></td>
+
+                <td>
+                    <div style="color:red">
+                        @{ var price = String.Format("{0:0,0 VND}", @item.product.Price);}
+                        @price
+                    </div>
+                </td>
+                <td>
+                    <b style="font-size:24px; ">
+                        @Html.ActionLink("-", "UpdateItem", "Cart", new { id = item.product.ProductID, quantity = item.quantity - 1 }, null)
+                    </b>
+                    <input type="text" name="quantity" value="@item.quantity" maxlength="2" size="2" />
+                    <b style="font-size:22px; ">
+                        @Html.ActionLink("+", "UpdateItem", "cart", new { id = item.product.ProductID, quantity = item.quantity + 1 }, null)
+                    </b>
+
+
+                    
+                </td>
+                <td>
+                    <div style="color:red">
+                        @{ var money = String.Format("{0:0,0 VND}", item.product.Price * item.quantity);}
+                        @{ total = total + (double)(item.product.Price * item.quantity);}
+                        @money
+                    </div>
+                </td>
+                <td>
+                    @Html.ActionLink("Xóa", "DeleteItem", new { id = item.product.ProductID })
+                </td>
+            </tr>
+        }
+        <tr class="text-right">
+            <td colspan="7">
+                @Html.ActionLink("Yêu thích", "Order", "Cart")
+                <div style="color:red">
+                    @{ var totalmoney = String.Format("{0:0,0 VND}", total);}
+                    Tổng tiền thuê: @totalmoney
+                </div>
+            </td>
+
+        </tr>
+    </table>
+}

@@ -1,0 +1,76 @@
+﻿@using Cuong_WebsiteTimPhongTro.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <link href="~/Content/css/Layout_Admin.css" rel="stylesheet" />
+    <link href="~/Content/css/Collection_Slideshow.css" rel="stylesheet" />
+
+
+
+
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="container2 navbar-fixed-top " style="margin: 0px 0px 0px 250px">
+        <ul class="root2">
+            <li>@Html.ActionLink("Trang chủ", "Index", "AdminHome", new { id = "" }, null)</li>
+            <li>@Html.ActionLink("Khách hàng", "Index", "Customer")</li>
+
+            @*<li>@Html.ActionLink("Manufacturer", "Index", "Manufacturer")</li>
+                <li>@Html.ActionLink("Nation", "Index", "Nation")</li>*@
+
+            <li>@Html.ActionLink("Danh sách ghim", "Index", "Orderpro")</li>
+            @*<li>@Html.ActionLink("OrderDetail", "Index", "OrderDetail")</li>*@
+
+            <li>@Html.ActionLink("Tin phòng trọ", "Index", "Product")</li>
+            <li>@Html.ActionLink("Trợ giúp & phản hồi", "Index", "AdminFeedback")</li>
+            <li>@Html.ActionLink("Người quản lý", "Index", "Staff")</li>
+
+            <li>@Html.ActionLink("Loại phòng trọ", "Index", "TypeProduct")</li>
+
+
+        </ul>
+
+    </div>
+
+
+    @*ảnh ngang
+        <div class="AnhNgang">
+            <img src="~/Content/Images/202.jpg">
+        </div>*@
+
+
+
+    <!-- Footer -->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />      @*dùng để gạch ngang wa*@
+        <footer>
+
+            @RenderPage("~/Views/Shared/_Footer.cshtml")
+
+
+        </footer>
+    </div>
+
+
+    <script src="~/Scripts/js/TongHop.js"></script>
+    <script src="~/Scripts/js/Collection_Slideshow.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

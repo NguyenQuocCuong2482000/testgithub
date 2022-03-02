@@ -1,0 +1,478 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=BenchNine:700); /*snip1*/
+@import url(https://fonts.googleapis.com/css?family=Raleway:400); /*snip_button*/
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    padding-top: 60px; /* khoảng cách của thanh nav đầu tiên đến thanh nav thứ 2*/
+    padding-bottom: 20px;
+    font-family: Tahoma;
+    font-size: 16px;
+    background-image: url('../Images/hinhnen3.jpg');
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-top: 10px; /*khoảng cách từ thanh nav 2 đến phần body*/
+    padding-left: 0px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* my code of CUONG*/
+
+
+
+
+.listitem {
+    width: 100%;
+    text-align: center;
+    background-image: url('../Images/hinhnenxam.jpg');
+    border-radius: 20px;
+}
+
+.myitem {
+    background-color: #EEEEEE;
+    display: inline-block;
+    
+    box-shadow: 2px 4px 8px #ddd;
+    border-radius: 20px;
+    padding: 7px;
+    margin: 10px;
+}
+
+.footer-item {
+    width: 100%;
+    background: #f1df11;
+    border: 7px solid #888888;
+    border-radius: 20px;
+}
+
+.table {
+    background-color: #EEEEEE;
+    padding: 12px;
+    border: 10px solid #343874;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.card-body-login {
+    background-color: #EEEEEE;
+    padding: 12px;
+    border: 10px solid #343874;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.form-horizontal {
+    background-color: #EEEEEE;
+    padding: 12px;
+    border: 10px solid #343874;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+
+
+
+
+
+
+/* Thanh nav thứ 3*/
+/*.container1 {
+    width: 1150px;
+    margin: 0 auto;
+}
+
+header {
+    height: 100px;
+    background: #DDDDDD;
+    border-radius: 15px;
+}
+
+    header img {
+        padding-left: 30px;
+        width: 300px;
+        height: 100px;
+    }*/
+/*thanh nav 1*/
+.navbar-default {
+    border: 10px solid #367517;
+    border-radius: 15px;
+}
+/*CSS nút button đẹp*/
+.snip1 {
+    background-color: #fcfafa;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    text-transform: uppercase; /*in hoa*/
+    font-weight: 300; /*làm cho chữ đậm lên giống như in*/
+}
+
+    .snip1:hover {
+        background-color: #f0f4d1;
+        border-radius: 20px;
+    }
+
+
+/*thanh nav 2 và menu con*/
+.container1 nav {
+    height: 45px;
+    background: #272f54;
+    margin-bottom: 10px; /* dưới thanh nav chừa khoảng cách là 10px*/
+    border-radius: 15px;
+    animation-name: nav2;
+    animation-duration: 10s;
+    animation-direction: reverse;
+    animation-iteration-count: infinite;
+}
+
+@keyframes nav2 {
+    25% {
+        background-color: #006241;
+    }
+
+    50% {
+        background-color: #8B0016;
+    }
+
+    75% {
+        background-color: #000000;
+    }
+
+    100% {
+        background-color: #38044B;
+    }
+}
+
+.container1 nav .menu ul.root > li {
+    float: left; /* chỉnh chữ từ hàng dọc thành hàng ngang*/
+    list-style: none; /* làm mất dấu chấm tròn đầu dòng*/
+    position: relative; /*khoảng trống danh mục cha ko bị ảnh hưởng bởi danh muc con*/
+}
+
+
+    .container1 nav .menu ul.root > li > a {
+        color: #fff;
+        font-size: 17px;
+        text-decoration: none; /*bỏ dấu gạch chân chữ*/
+        padding: 0px 15px 0px 15px;
+        line-height: 45px;
+        display: block; /*tô màu hết vùng hover*/
+
+        animation-timing-function: ease; /* đoạn này xuống là chỉnh chữ bay*/
+        position: relative;
+        animation: mymove 2s;
+        animation-direction: reverse; /*thực hiện một hành động nào đó bằng cách ngược lại*/
+    }
+
+
+
+/*chỉnh chữ bay từ ngoài vào*/
+@keyframes mymove {
+    from {
+        left: 0px;
+    }
+
+    to {
+        left: 200px;
+    }
+}
+
+
+
+
+
+.container1 nav .menu ul.root > li > a:hover {
+    color: #3366FF;
+    transition: ease-in 0.35s; /*làm hiện màu chữ chậm đi 0.35s*/
+    -moz-transition: ease-in 0.35s;
+    -webkit-transition: ease-in 0.35s;
+}
+
+ul.submenu {
+    width: 250px; /*chiều rông thanh menu con*/
+    background: #272f54;
+    min-height: 100px; /*chiều dài thanh menu con*/
+    display: none; /*ẩn thanh menu con đi*/
+    position: absolute; /*khoảng trống danh muc con ko làm ảnh hướng đến danh mục cha*/
+}
+
+    ul.submenu li {
+        list-style: none;
+    }
+
+        ul.submenu li a {
+            color: #fff;
+            text-decoration: none;
+            display: block; /*nên luôn luôn có*/
+            border-top: 1px solid #3366CC; /*gạch chân bên trên*/
+            line-height: 30px;
+            text-indent: 10px; /*chữ thụt vào trong 10px*/
+        }
+
+            ul.submenu li a:hover {
+                color: #3366FF;
+                transition: ease-in 0.35s; /*làm hiện màu chữ chậm đi 0.35s*/
+                -moz-transition: ease-in 0.35s;
+                -webkit-transition: ease-in 0.35s;
+            }
+
+ul.root > li:hover ul.submenu {
+    display: block; /*rê chuột vào chữ hiện thanh menu con*/
+    transition: ease-out 0.35s; /*làm hiện thanh menu con chậm đi 0.35s*/
+    -moz-transition: ease-out 0.35s;
+    -webkit-transition: ease-out 0.35s;
+}
+/*kết thúc menu con*/
+/*thiết kế hộp tìm kiếm*/
+nav .search {
+    line-height: 30px;
+    float: right;
+    padding: 5px 15px;
+    animation-timing-function: ease; /*chỉnh chữ bay*/
+    position: relative;
+    animation: mymove 2s;
+    animation-direction: reverse; /*thực hiện một hành động nào đó bằng cách ngược lại*/
+}
+
+    nav .search .box {
+        width: 400px;
+        -webkit-border-radius: 7px; /*làm tron hộp box*/
+        -moz-border-radius: 7px;
+        border-radius: 7px;
+    }
+
+.buttonSearch {
+    border-radius: 7px;
+}
+
+    .buttonSearch:hover {
+        background-color: #aeed79;
+    }
+
+.fa-search {
+    width: 40px;
+    color: #001EFF;
+}
+
+
+/*CSS footer*/
+footer {
+    height: 500px;
+    background: #272f54;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 15px;
+}
+
+    footer .content .row .footer2 .colum {
+        border-top: 2px solid #BBBBBB; /*gạch chân bên trên*/
+    }
+
+
+/* thiết kế detail trang chủ*/
+.detail_customer {
+    border-top: 3px solid #BBBBBB;
+    color: #008800;
+}
+
+.font_detail {
+    font-size: 20px;
+}
+
+    .font_detail .img {
+        text-align: center;
+    }
+
+        .font_detail .img:hover {
+            transform: scale(1.2); /*khi rê chuột vào ảnh , phóng to ảnh lên*/
+        }
+
+
+/*dùng để căn giữa các tên trong mục đăng ký, tạo tin, edit các thứ*/
+.EditAll {
+    text-align: center; /*căn chữ ra giữa*/
+    line-height: 30px; /*căn chữ ra giữa không gian của nó*/
+}
+
+
+
+/* snip_button1  chỉnh sửa tài khoản*/
+.snip_button1 {
+    float: right;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 0px 30px;
+    display: inline-block;
+    margin: 15px 30px;
+    line-height: 38px;
+    font-weight: 400;
+    font-size: 1em;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-size: 16px;
+    border-radius: 30px;
+    letter-spacing: 2px;
+    transition: all 0.35s ease;
+    box-sizing: border-box;
+    border: 6px solid #58508d;
+}
+
+
+
+
+
+    .snip_button1:hover,
+    .snip_button1.hover {
+        background-color: #b1f1ce;
+    }
+
+
+
+/* snip_button2 đăng tin*/
+.snip_button2 {
+    float: left;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 0px 30px;
+    display: inline-block;
+    margin: 15px 30px;
+    line-height: 38px;
+    font-weight: 400;
+    font-size: 1em;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-size: 16px;
+    border-radius: 30px;
+    letter-spacing: 2px;
+    transition: all 0.35s ease;
+    box-sizing: border-box;
+    border: 6px solid #58508d;
+}
+
+    .snip_button2:hover,
+    .snip_button2.hover {
+        background-color: #b1f1ce;
+    }
+
+
+/*css cho chữ kiểu PhongTroABC*/
+
+svg {
+    display: block;
+    font: 10.5em 'Montserrat';
+    width: 960px;
+    height: 200px;
+    margin: 10px 10px -80px 10px; /*4 value trên phải dưới trái*/ /*3 value trên, trái và phải, dưới*/ /*2 value Trên dưới, trái phải*/
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+    .text-copy:nth-child(1) {
+        stroke: #4D163D;
+        animation-delay: -1s;
+    }
+
+    .text-copy:nth-child(2) {
+        stroke: #840037;
+        animation-delay: -2s;
+    }
+
+    .text-copy:nth-child(3) {
+        stroke: #BD0034;
+        animation-delay: -3s;
+    }
+
+    .text-copy:nth-child(4) {
+        stroke: #BD0034;
+        animation-delay: -4s;
+    }
+
+    .text-copy:nth-child(5) {
+        stroke: #FDB731;
+        animation-delay: -5s;
+    }
+
+@keyframes stroke-offset {
+    100% {
+        stroke-dashoffset: -35%;
+    }
+}
+
+/*css cho chữ kiểu cho thẻ h1 ...*/
+.center-outer {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.center-inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Essential CSS - Makes the effect work */
+
+.bubbles {
+    display: inline-block;
+    font-family: arial;
+    position: relative;
+}
+
+    .bubbles h1 {
+        position: relative;
+        margin: 1em 0 0;
+        font-family: 'Luckiest Guy', cursive;
+        color: #317408;
+        z-index: 2;
+    }
+
+.individual-bubble {
+    position: absolute;
+    border-radius: 100%;
+    bottom: 10px;
+    background-color: #56814c;
+    z-index: 1;
+}
+/*kết thúc kiểu chữ h1*/

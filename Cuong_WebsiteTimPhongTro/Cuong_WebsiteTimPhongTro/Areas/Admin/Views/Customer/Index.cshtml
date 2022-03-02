@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Cuong_WebsiteTimPhongTro.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Khách hàng</h1>
+        </div>
+
+    </div>
+</div>
+
+<p class="snip_button2">
+    @Html.ActionLink("Đăng ký", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <p>Tên người dùng</p>
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.TaxCode)
+        </th>*@
+        <th>
+            <p>Số điện thoại</p>
+        </th>
+        <th>
+            <p>Địa chỉ</p>
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Representative)
+        </th>*@
+        <th>
+            <p>Gmail</p>
+        </th>
+        <th>
+            <p>Hình ảnh</p>
+        </th>
+        <th>
+            <p>Tên đăng nhập</p>
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.PassWord)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CustomerName)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.TaxCode)
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.Representative)
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @*@Html.DisplayFor(modelItem => item.image)*@
+        <img src="~/Content/Images/@item.image" width="100px" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserName)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.PassWord)
+        </td>*@
+    <td>
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.CustomerID }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.CustomerID }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.CustomerID })
+    </td>
+</tr>
+}
+
+</table>

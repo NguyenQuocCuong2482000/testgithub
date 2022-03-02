@@ -1,0 +1,131 @@
+﻿@model Cuong_WebsiteTimPhongTro.Models.Customer
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Đăng ký tài khoản</h1>
+        </div>
+
+    </div>
+</div>
+
+@{ string contentck;}
+@*thông báo*@
+@if (TempData["check"] != null)
+{
+    <p class="alert alert-danger" id="successMessage">@TempData["check"]</p>
+}
+
+@using (Html.BeginForm("Register", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal ">
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group col-md-12 col-md-push-3 ">
+            <div class="col-md-2 ">
+                <p class="EditAll">Họ tên</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group col-md-12 col-md-push-3">
+            <div class="col-md-2">
+                <p class="EditAll">Số điện thoại</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-12 col-md-push-3">
+            <div class="col-md-2">
+                <p class="EditAll">Địa chỉ</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-12 col-md-push-3">
+            <div class="col-md-2">
+                <p class="EditAll">Email</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-12 col-md-push-3">
+            <div class="col-md-2">
+                <p class="EditAll">Hình ảnh</p>
+            </div>
+
+            <div class="col-md-10">
+                <input type="file" name="Images" />
+                @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group col-md-12 col-md-push-3">
+            <div class="col-md-2">
+                <p class="EditAll">Tên đăng nhập</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-12 col-md-push-3">
+            <div class="col-md-2">
+                <p class="EditAll">mật khẩu</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.PassWord, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 col-md-push-3">
+                <input type="submit" value="Đăng ký" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Quay lại", "Index")
+</div>
+
+

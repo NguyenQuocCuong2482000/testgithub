@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Cuong_WebsiteTimPhongTro.Models.Staff>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Tài khoản quản lý</h1>
+        </div>
+
+    </div>
+</div>
+
+<p class="snip_button2">
+    @Html.ActionLink("Tạo tài khoản", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <p>Tên</p>
+        </th>
+        <th>
+            <p>Ngày sinh</p>
+        </th>
+        <th>
+            <p>Giới tính (True = nam)</p>
+        </th>
+        <th>
+            <p>Địa chỉ</p>
+        </th>
+        <th>
+            <p>Điện thoại</p>
+        </th>
+        <th>
+            <p>Hình ảnh</p>
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateofbirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.image)*@
+            <img src="~/Content/Images/@item.image" width="100px" />
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>*@
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.staffid }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.staffid }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.staffid })
+        </td>
+    </tr>
+}
+
+</table>

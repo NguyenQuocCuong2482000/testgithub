@@ -1,0 +1,82 @@
+﻿@model Cuong_WebsiteTimPhongTro.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>Bạn thật sự muốn xóa?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <p>Tên</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            <p>Thông tin</p>
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+
+        <dt>
+            <p>Ngày đăng</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfManufacture)
+        </dd>
+
+        <dt>
+            <p>Loại phòng</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeProduct.typeName)
+        </dd>
+
+
+
+
+        <dt>
+            <p>Giá thuê</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            <p>Hình ảnh</p>
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Images)*@
+            <img src="~/Content/Images/@Model.Images" width="200px" height="150px" />
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+    @if (TempData["check"] != null)
+    {
+        <p class="alert alert-success" id="successMessage">@TempData["check"]</p>
+    }
+</div>

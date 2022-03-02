@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJUCH3gdkWkKYDgRCu/FUMwAAAAACAAAAAAAQZgAAAAEAACAAAACDfAD37gaXY6o0hfDJSp0vcIaXCw3qxm5QZeCN27pViAAAAAAOgAAAAAIAACAAAACdS9KItmrGDQmoTPjeHB1nC97i/XFWpEF0AmMk+VL1WzAAAAC32MWQjZcYJ7nMdL9HXdT/AqxzjL/kf3LXEnm3Pbpp1qKA9lAluFC1CbVDG1cC+/FAAAAAZmnV27y15rgReJWQE8XWs1O/W66Y+x3CmN+avbnzkd8XwQl2NWx+gid/UkDcAzbSutFdlG6blDd+jQtNJdAZ1Q==</EncryptedPassword>
+    <History>True|2021-12-14T04:59:41.0630394Z;True|2021-12-14T10:33:31.5008494+07:00;True|2021-12-14T10:16:09.8949307+07:00;True|2021-12-14T09:47:25.8256007+07:00;True|2021-12-12T11:06:24.9547874+07:00;True|2021-12-12T10:58:09.5335703+07:00;True|2021-12-11T14:27:09.9873817+07:00;True|2021-12-11T14:24:40.5412501+07:00;True|2021-12-11T14:16:10.9420127+07:00;True|2021-12-11T14:12:21.7361954+07:00;False|2021-12-11T14:05:27.0872353+07:00;True|2021-12-10T19:19:00.7038425+07:00;True|2021-12-10T19:17:05.6952438+07:00;True|2021-12-10T18:30:24.7713395+07:00;True|2021-12-10T18:27:53.9985754+07:00;True|2021-12-10T18:26:39.9565296+07:00;True|2021-12-10T18:20:52.3639685+07:00;</History>
+  </PropertyGroup>
+</Project>

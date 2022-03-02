@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Cuong_WebsiteTimPhongTro.Models.Orderpro>
+
+@{
+    ViewBag.Title = "HistoryOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Tin đã ghim</h1>
+        </div>
+
+    </div>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <p>STT</p>
+        </th>
+        <th>
+            <p>Ngày ghim</p>
+        </th>
+        
+        <th>
+            <p>ID quản lý</p>
+        </th>
+        <th>
+            <p>Tên người quản lý</p>
+        </th>
+        <th>
+            <p>Trạng thái (0:Hợp lệ , 1:Không hợp lệ)</p>
+            
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Staff.fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+
+                @Html.ActionLink("Chi tiết", "DetailsOrder", new { id = item.OrderID })
+
+            </td>
+        </tr>
+    }
+
+</table>

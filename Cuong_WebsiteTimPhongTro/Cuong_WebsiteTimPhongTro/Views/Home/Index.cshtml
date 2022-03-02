@@ -1,0 +1,235 @@
+﻿@model PagedList.IPagedList<Cuong_WebsiteTimPhongTro.Models.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<!-- nút lên đầu trang -->
+<button id="myBtn" title="Lên đầu trang" style="display: none; position: fixed; bottom: 100px; right: 28px; z-index: 99;
+        border: none; outline: none; background-color: #fff; color: white; cursor: pointer;
+         opacity: 0.7;box-shadow: 1px 1px 1px 1px #272f54">
+    <img src='~/Content/Images/lendautrang.jpg' title='lên đầu trang' width="50px" height="50px " />
+</button>
+<script>
+    window.onscroll = function () {
+        scrollFunction()
+    };
+    function scrollFunction() {
+
+        if (document.body.scrollTop > 100                       /*di chuyển một khoảng 100 sẽ hiện nút*/
+            || document.documentElement.scrollTop > 100) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+
+    document.getElementById('myBtn').addEventListener("click",
+        function () {
+            document.body.scrollTop = 0;                 /*bấm vào thì trở về tọa độ 0 , 0*/
+            document.documentElement.scrollTop = 0;
+        });
+</script>
+
+<!--Bộ sưu tập slide-->
+<!-- Container for the image gallery -->
+<div class="container">
+
+    <!-- Full-width images with number text -->
+    <div class="mySlides">
+        <div class="numbertext">1 / 6</div>
+        <img src="~/Content/Images/99.jpg" style="width:100%" height="500px">
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">2 / 6</div>
+        <img src="~/Content/Images/96.jpg" style="width:100%" height="500px">
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">3 / 6</div>
+        <img src="~/Content/Images/67.jpg" style="width:100%" height="500px">
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">4 / 6</div>
+        <img src="~/Content/Images/82.jpg" style="width:100%" height="500px">
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">5 / 6</div>
+        <img src="~/Content/Images/91.jpg" style="width:100%" height="500px">
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">6 / 6</div>
+        <img src="~/Content/Images/76.jpg" style="width:100%" height="500px">
+    </div>
+
+    <!-- Next and previous buttons -->
+    @*<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>*@
+
+    <!-- Image text -->
+    <div class="caption-container">
+        <p id="caption"></p>
+    </div>
+
+    <!-- Thumbnail images -->
+    <div class="row">
+        <div class="column">
+            <img class="demo cursor" src="~/Content/Images/99.jpg" style="width:100%" height="100px"
+                 onclick="currentSlide(1)" alt="Gần gũi thiên nhiên">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="~/Content/Images/96.jpg" style="width:100%" height="100px"
+                 onclick="currentSlide(2)" alt="Nhà gỗ nghệ thuật">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="~/Content/Images/67.jpg" style="width:100%" height="100px"
+                 onclick="currentSlide(3)" alt="Đơn giản và thoải mái">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="~/Content/Images/82.jpg" style="width:100%" height="100px"
+                 onclick="currentSlide(4)" alt="Đáng yêu và thích hợp thư giản">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="~/Content/Images/91.jpg" style="width:100%" height="100px"
+                 onclick="currentSlide(5)" alt="Sang trọng, an ninh">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="~/Content/Images/76.jpg" style="width:100%" height="100px"
+                 onclick="currentSlide(6)" alt="sống chung, náo nhiệt">
+        </div>
+    </div>
+</div>
+<hr />
+
+<!--kết thúc slide-->
+
+
+
+<div class="listitem">
+
+    <p style="text-align: center; text-transform: uppercase; font-size: 25px; font-weight: bold; color:#282a74 "> Phòng trọ mới</p>
+
+
+    @{ string id = "";}
+    @foreach (var item in Model)
+    {
+
+        id = ViewBag.id;
+        <div class="myitem">
+
+            <a href="~/Home/Details?id=@item.ProductID">
+                <b>@Html.DisplayFor(modelItem => item.ProductName)</b>
+                <br>
+
+            </a>
+
+
+            <a href="~/Home/Details?id=@item.ProductID">
+                <img src='~/Content/Images/@Html.DisplayFor(modelItem => item.Images)' width="300px" height="300px" />
+            </a>
+            <div style="color:red">
+                @{ var price = String.Format("{0:0,0 VND}", item.Price); }
+                @price
+            </div>
+            <br />
+            <div>
+                <a href="~/Cart/AddItem?id=@item.ProductID">
+                    <img src='~/Content/Images/yeuthich.jpg' width="150px" />
+                </a>
+            </div>
+
+        </div>
+    }
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, id = id, @SearchString = ViewBag.SearchString }))
+
+</div>
+
+
+
+
+
+
+@*<div class="New_House">
+    <article>
+        <h3>Tin tức thuê nhà</h3>
+        <div class="new_list">
+            <div class="news_item">
+                <h4>Nhà cho thuê giá siêu rẻ tại quận 1</h4>
+                <img src="~/Content/Images/99.jpg" width="280" height="250" />
+                <div class="content">
+                    Cho thuê nhà mới nguyên căn 1 trệt, 1 lầu (Nhà y chang như hình đăng).
+                    Nhà có bề ngang dài 5.3m2 tạo không gian rộng rãi,
+                    thoải mái với tổng diện tích sử dụng của 2 tầng là 86m2
+                </div>
+            </div>
+
+            <div class="news_item">
+                <h4>Nhà cho thuê giá siêu rẻ tại quận 9</h4>
+                <img src="~/Content/Images/98.jpg" width="280" height="250" />
+                <div class="content">
+                    Cho thuê nhà mới nguyên căn 1 trệt, 1 lầu (Nhà y chang như hình đăng).
+                    Nhà có bề ngang dài 5.3m2 tạo không gian rộng rãi,
+                    thoải mái với tổng diện tích sử dụng của 2 tầng là 86m2
+                </div>
+            </div>
+
+            <div class="news_item" id="fix">
+                <h4>Nhà cho thuê giá siêu rẻ tại quận 12</h4>
+                <img src="~/Content/Images/96.jpg" width="280" height="250" />
+                <div class="content">
+                    Cho thuê nhà mới nguyên căn 1 trệt, 1 lầu (Nhà y chang như hình đăng).
+                    Nhà có bề ngang dài 5.3m2 tạo không gian rộng rãi,
+                    thoải mái với tổng diện tích sử dụng của 2 tầng là 86m2
+
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </article>
+
+    <article>
+        <h3>Khu vực giá rẻ</h3>
+        <div class="new_list">
+            <div class="news_item">
+                <h4>Nhà cho thuê giá siêu rẻ tại quận 7</h4>
+                <img src="~/Content/Images/95.jpg" width="280" height="250" />
+                <div class="content">
+                    Cho thuê nhà mới nguyên căn 1 trệt, 1 lầu (Nhà y chang như hình đăng).
+                    Nhà có bề ngang dài 5.3m2 tạo không gian rộng rãi,
+                    thoải mái với tổng diện tích sử dụng của 2 tầng là 86m2
+                </div>
+            </div>
+
+            <div class="news_item">
+                <h4>Nhà cho thuê giá siêu rẻ tại quận 4</h4>
+                <img src="~/Content/Images/93.jpg" width="280" height="250" />
+                <div class="content">
+                    Cho thuê nhà mới nguyên căn 1 trệt, 1 lầu (Nhà y chang như hình đăng).
+                    Nhà có bề ngang dài 5.3m2 tạo không gian rộng rãi,
+                    thoải mái với tổng diện tích sử dụng của 2 tầng là 86m2
+                </div>
+            </div>
+
+            <div class="news_item" id="fix">
+                <h4>Nhà cho thuê giá rẻ tại quận Tân Bình</h4>
+                <img src="~/Content/Images/91.jpg" width="280" height="250" />
+                <div class="content">
+                    Cho thuê nhà mới nguyên căn 1 trệt, 1 lầu (Nhà y chang như hình đăng).
+                    Nhà có bề ngang dài 5.3m2 tạo không gian rộng rãi,
+                    thoải mái với tổng diện tích sử dụng của 2 tầng là 86m2
+
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </article>
+</div>*@

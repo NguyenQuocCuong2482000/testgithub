@@ -1,0 +1,224 @@
+﻿@using Cuong_WebsiteTimPhongTro.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/css/TinTucThueNha.css" rel="stylesheet" />
+    <link href="~/Content/css/Collection_Slideshow.css" rel="stylesheet" />
+    <link href="~/Content/css/Layout_Admin.css" rel="stylesheet" />   
+    @*<link href="~/Content/css/HopThoaiChat.css" rel="stylesheet" />*@
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+    
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+
+
+    <!-- ảnh bên trái và phải trong layout-->
+    @*<div>
+            <img style="overflow: hidden; position: fixed; left: 0;
+                 border: 7px solid #f2eff8; border-radius: 30px; margin: 13px 0px 0px 0px; width: 180px; height: 685px "
+                 src='~/Content/Images/ngoinha2.gif' title='Ngôi nhà tuyết trắng' />
+        </div>
+
+        <div>
+            <img style="overflow: hidden;  position: fixed; right: 0;
+                 border: 7px solid #f2eff8; border-radius: 30px; margin: 13px 0px 0px 0px; width: 180px; height: 685px "
+                 src='~/Content/Images/ngoinha3.gif' title='Ngôi nhà tuyết trắng'  />
+        </div>*@
+
+
+
+
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="container">*@
+
+    @*Thanh ngang 1*@
+    @*<div class="navbar-collapse collapse">*@
+    <div class="container2 navbar-fixed-top ">
+        <ul class="root2">
+
+
+            <li>@Html.ActionLink("Trang chủ", "Index", "Home", new { id = "" }, null)</li>
+            <!-- menu tự động thay đổi theo CSDL trong sql-->
+            @foreach (TypeProduct item in (List<TypeProduct>)ViewBag.menu)
+            {
+                <li>@Html.ActionLink(item.typeName, "Index", "Home", new { id = item.typeID }, null)</li>
+            }
+            <li>
+                @Html.ActionLink("Đăng tin mới", "Create")
+            </li>
+        </ul>
+
+    </div>
+
+
+    @*</div>
+            </div>
+        </div>*@
+
+
+
+
+
+
+    <div class="container1">
+
+        <nav>
+            <div class="menu">
+                <ul class="root">
+
+                    <li>@Html.ActionLink("Đăng ký", "Register", "Login")</li>
+                    <li>
+                        @{
+                            if (Session["customer"] != null)
+                            {
+                            <li>
+                                <a>Quản lý</a>
+                                <ul class="submenu">
+                                    <li>
+                                    <li>@Html.ActionLink("Tin đã yêu thích", "HistoryOrder", "Home")</li>
+
+                                    @*<li>@Html.ActionLink("Edit customer", "Index", "Edit_Customer")</li>*@
+                                    <li>@Html.ActionLink("Tin đã đăng & Tài khoản", "Index", "Customer_Product")</li>
+                                    <li>@Html.ActionLink("Đăng xuất", "Logout", "Login")</li>
+
+                                </ul>
+
+                            </li>
+
+
+
+                        }
+
+
+                        else
+                        {
+                            @Html.ActionLink("Đăng nhập", "Index", "Login")
+                        }
+                        }
+
+                        <li>@Html.ActionLink("Yêu thích", "Index", "Cart")</li>
+                        @*<li>@Html.ActionLink("Trò truyện", "Index", "HopThoaiChat")</li>*@
+                        <li>@Html.ActionLink("Trợ giúp & phản hồi", "Index", "Feedback")</li>
+
+
+
+                    </ul>
+                </div>
+                <div class="search">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                    {
+                        <input class="box" placeholder="Tìm theo tên, địa điểm, diện tích..." type="text" value="@ViewBag.SearchString" name="searchString" />
+                        <button class="buttonSearch" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    }
+                </div>
+            </nav>
+        </div>
+
+
+
+
+        <!-- Chữ nhiều màu di chuyển css -->
+        <center>
+            <svg viewBox="0 50 1070 300">
+                <symbol id="s-text">
+                    <text text-anchor="middle" x="50%" y="60%">Phòng Trọ Vip</text>
+                </symbol>
+
+                <g class="g-ants">
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                </g>
+            </svg>
+        </center>
+
+
+
+
+
+        <!-- Footer -->
+        <div class="container body-content">
+            @RenderBody()
+            <hr />      @*dùng để gạch ngang wa*@
+            <footer>
+
+                @RenderPage("_Footer.cshtml")   @*dùng RenderPage để kết nối với đoạn code Footer được tách ra*@
+
+
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+        <!-- messenger của Cường -->
+        <!-- Messenger Plugin chat Code -->
+        <div id="fb-root"></div>
+
+        <!-- Your Plugin chat code -->
+        <div id="fb-customer-chat" class="fb-customerchat">
+        </div>
+
+        <script>
+            var chatbox = document.getElementById('fb-customer-chat');
+            chatbox.setAttribute("page_id", "108075803880975");
+            chatbox.setAttribute("attribution", "biz_inbox");
+        </script>
+
+        <!-- Your SDK code -->
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    xfbml: true,
+                    version: 'v12.0'
+                });
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <!-- kết thúc messenger của Cường -->
+
+
+
+        <script src="~/Scripts/js/Collection_Slideshow.js"></script>
+
+        <script src="~/Scripts/js/HopThoaiChat.js"></script>
+        <script src="~/Scripts/js/TongHop.js"></script>
+    </body>
+    </html>

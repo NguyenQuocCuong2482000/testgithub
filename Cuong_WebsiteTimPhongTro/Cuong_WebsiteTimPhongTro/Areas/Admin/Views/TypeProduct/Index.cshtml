@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Cuong_WebsiteTimPhongTro.Models.TypeProduct>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Phân loại phòng trọ</h1>
+        </div>
+
+    </div>
+</div>
+
+<p class="snip_button2">
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <p>Mã ID</p>
+        </th>
+        <th>
+            <p>Tên</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.typeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.typeName)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.typeID }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.typeID }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.typeID })
+        </td>
+    </tr>
+}
+
+</table>

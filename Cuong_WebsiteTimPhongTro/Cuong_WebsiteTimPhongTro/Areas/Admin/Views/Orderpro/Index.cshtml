@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Cuong_WebsiteTimPhongTro.Models.Orderpro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Danh sách ghim</h1>
+        </div>
+
+    </div>
+</div>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            <p>ID phòng trọ</p>
+        </th>
+        <th>
+            <p>Ngày thực hiện</p>
+        </th>
+        <th>
+            <p>ID khách hàng</p>
+        </th>
+        <th>
+            <p>Người chỉnh sửa</p>
+        </th>
+        <th>
+            <p>Trạng thái</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new {  id=item.OrderID }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.OrderID })
+            @*@Html.ActionLink("Delete", "Delete", new { id = item.OrderID })*@
+        </td>
+    </tr>
+}
+
+</table>

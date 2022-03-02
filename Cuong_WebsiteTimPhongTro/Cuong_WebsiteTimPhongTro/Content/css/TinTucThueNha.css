@@ -1,0 +1,36 @@
+﻿/*CSS Tin tức thuê nhà*/
+..article h3 {
+    text-align: center; /* căn chữ ra giữa*/
+    padding: 15px 0;
+    color: #272f54;
+    font-size: 20px;
+    text-transform: uppercase; /*viết hoa chữ tự động*/
+    font-weight: bold;
+}
+
+article .new_list {
+    padding-left: 50px;
+}
+
+    article .new_list .news_item {
+        width: 28%;
+        padding: 1%;
+        float: left;
+        border: 4px solid #160d5e;
+        margin-right: 5.3%;
+        border-radius: 15px;
+        background-color: #EEEEEE;
+    }
+
+        article .new_list .news_item h4 {
+            font-size: 16px;
+            color: #ad3f00;
+        }
+
+        article .new_list .news_item img {
+            margin: 10px 0;
+        }
+
+        article .new_list .news_item content {
+            font-size: 13px;
+        }

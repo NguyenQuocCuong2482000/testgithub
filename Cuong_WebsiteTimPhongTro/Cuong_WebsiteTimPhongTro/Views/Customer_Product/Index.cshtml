@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Cuong_WebsiteTimPhongTro.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Quản lý phòng trọ</h1>
+        </div>
+
+    </div>
+</div>
+<hr />
+<div>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <center><b><p>Người quản lý: @item.Customer.CustomerName</p></b></center>
+        </tr>
+        <p class="snip_button1">
+            @Html.ActionLink("Chỉnh sửa tài khoản", "EditProfile", new { id = item.CustomerID })
+        </p>
+        break;
+    }
+</div>
+
+
+<p class="snip_button2">
+    @Html.ActionLink("Đăng tin mới", "Create")
+</p>
+
+@{ string contentck;}
+@*thông báo xóa thành công*@
+@if (TempData["check"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["check"]</p>
+}
+<table class="table">
+    <tr>
+        <th>
+            <p>Tên</p>
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>*@
+        <th>
+            <p>Ngày đăng</p>
+        </th>
+
+        @*<th>
+                @Html.DisplayNameFor(model => model.ManufacturerID)
+            </th>*@
+        <th>
+            <p>Giá thuê</p>
+        </th>
+        <th>
+            <p>Hình ảnh</p>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            @*<td>
+                    @Html.Raw(item.Description)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfManufacture)
+            </td>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ManufacturerID)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Images)*@
+                <img src="~/Content/Images/@item.Images" width="100px" />
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.ProductID }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.ProductID }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ProductID })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,100 @@
+﻿@model Cuong_WebsiteTimPhongTro.Models.Feedback
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Thông tin</h1>
+        </div>
+
+    </div>
+</div>
+
+<div class="detail_customer">
+</div>
+<div class="col-md-12">
+
+    <div class="font_detail col-md-6">
+
+        <dt>
+            <p>Hình ảnh</p>
+        </dt>
+
+        <dd class="img">
+            <img src="~/Content/Images/@Model.Images" width="500px" />
+        </dd>
+    </div>
+    <div class="col-md-6">
+
+        <dl class="font_detail dl-horizontal">
+
+            <dt>
+                <p>Họ tên:</p>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.CustomerName)
+            </dd>
+
+            <dt>
+                <p>Email:</p>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                <p>Số điện thoại:</p>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+
+
+            <dt>
+                <p>Thời điểm đăng:</p>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FeedbackDate)
+            </dd>
+
+
+
+
+        </dl>
+    </div>
+
+
+
+</div>
+
+<div class="col-md-12">
+    <div class="col-md-6">
+        <dt>
+            <h2 class="detail_customer">Nội dung phản hồi</h2>
+        </dt>
+
+        <dd class="font_detail">
+
+            @Html.Raw(Model.FeedbackCustomer)
+        </dd>
+    </div>
+    <div class="col-md-6">
+        <h2 class="detail_customer">Bản đồ</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.5893807675784!2d106.63970541474404!3d10.766095562328367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752e9747f2686b%3A0xd9b909a86e926ccb!2zxJDhuqdtIFNlbg!5e0!3m2!1svi!2sus!4v1636521683929!5m2!1svi!2sus"
+                width="550" height="550" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+</div>
+<p>
+
+    @Html.ActionLink("Quay lại", "Index")
+</p>

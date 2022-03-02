@@ -1,0 +1,189 @@
+﻿@model Cuong_WebsiteTimPhongTro.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Product</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ProductID)
+
+
+    <div class="form-group col-md-12  ">
+        <div class="col-md-2 ">
+            <p class="EditAll">ID người đăng</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CustomerID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12  ">
+        <div class="col-md-2 ">
+            <p class="EditAll">Tên phòng trọ</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12  ">
+        <div class="col-md-2 ">
+            <p class="EditAll">Số điện thoại</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12 ">
+        <div class="col-md-2 ">
+            <p class="EditAll">Địa chỉ</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12  ">
+        <div class="col-md-2 ">
+            <p class="EditAll">Thông tin phòng trọ</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Description, new { @class = "ckeditor" })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12  ">
+        <div class="col-md-2 ">
+            <p class="EditAll">Ngày đăng</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateOfManufacture, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = @Model.DateOfManufacture.Value.ToString("yyyy-MM-dd") } })
+            @Html.ValidationMessageFor(model => model.DateOfManufacture, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12 ">
+        <div class="col-md-2 ">
+            <p class="EditAll">Phân loại phòng</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.DropDownList("TypeID", (IEnumerable<SelectListItem>)ViewBag.types, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TypeID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group col-md-12  ">
+        <div class="col-md-2 ">
+            <p class="EditAll">Diện tích</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DienTich, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DienTich, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group col-md-12  ">
+        <div class="col-md-2 ">
+            <p class="EditAll">Giá thuê</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12  ">
+        <div class="col-md-2 ">
+            <p class="EditAll">Hình ảnh 1</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control" } })
+            <img src="~/Content/Images/@Model.Images" width="100px" />
+            @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+            <input type="file" name="Images" />
+        </div>
+    </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-2">
+            <p class="EditAll">Hình ảnh 2</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Images1, new { htmlAttributes = new { @class = "form-control" } })
+            <img src="~/Content/Images/@Model.Images1" width="100px" />
+            <input type="file" name="Images1" />
+            @Html.ValidationMessageFor(model => model.Images1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group col-md-12">
+        <div class="col-md-2">
+            <p class="EditAll">Hình ảnh 3</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Images2, new { htmlAttributes = new { @class = "form-control" } })
+            <img src="~/Content/Images/@Model.Images2" width="100px" />
+            <input type="file" name="Images2" />
+            @Html.ValidationMessageFor(model => model.Images2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-2">
+            <p class="EditAll">Hình ảnh 4</p>
+        </div>
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Images3, new { htmlAttributes = new { @class = "form-control" } })
+            <img src="~/Content/Images/@Model.Images3" width="100px" />
+            <input type="file" name="Images3" />
+            @Html.ValidationMessageFor(model => model.Images3, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    <script src="//cdn.ckeditor.com/4.16.1/full/ckeditor.js"></script>
+}

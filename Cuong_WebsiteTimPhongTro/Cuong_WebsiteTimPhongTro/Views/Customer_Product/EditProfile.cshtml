@@ -1,0 +1,118 @@
+﻿@model Cuong_WebsiteTimPhongTro.Models.Customer
+
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thay đổi thông tin của người dùng</h2>
+
+@using (Html.BeginForm("EditProfile", "Customer_Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CustomerID)
+
+        <div class="form-group col-md-12">
+            <div class="col-md-2">
+                <p class="EditAll">Họ tên</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group col-md-12">
+            <div class="col-md-2">
+                <p class="EditAll">Số điện thoại</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <div class="col-md-2">
+                <p class="EditAll">Địa chỉ</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group col-md-12">
+            <div class="col-md-2">
+                <p class="EditAll">Email</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group col-md-12">
+            <div class="col-md-2">
+                <p class="EditAll">Hình ảnh</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control" } })
+                <img src="~/Content/Images/@Model.image" width="100px" />
+                @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+                <input type="file" name="Images" />
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group col-md-12">
+            <div class="col-md-2">
+                <p class="EditAll">Tên đăng nhập</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <div class="col-md-2">
+                <p class="EditAll">Mật khẩu</p>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PassWord, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu thông tin" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại", "Index")
+</div>

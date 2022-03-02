@@ -1,0 +1,125 @@
+﻿@model Cuong_WebsiteTimPhongTro.Models.Feedback
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Chỉnh sửa phòng trọ</h1>
+        </div>
+
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Edit", "AdminFeedback", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.FeedbackID)
+
+<div class="form-group col-md-12  ">
+    <div class="col-md-2 ">
+        <p class="EditAll">Nội dung phản hồi</p>
+    </div>
+
+    <div class="col-md-10">
+        @Html.TextAreaFor(model => model.FeedbackCustomer, new { @class = "ckeditor" })
+        @Html.ValidationMessageFor(model => model.FeedbackCustomer, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group col-md-12  ">
+    <div class="col-md-2 ">
+        <p class="EditAll">ID người dùng</p>
+    </div>
+
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.CustomerID, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+
+<div class="form-group col-md-12  ">
+    <div class="col-md-2 ">
+        <p class="EditAll">Ngày đăng</p>
+    </div>
+
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.FeedbackDate, new { htmlAttributes = new { @class = "form-control", type = "date", @Value = @Model.FeedbackDate.Value.ToString("yyyy-MM-dd") } })
+        @Html.ValidationMessageFor(model => model.FeedbackDate, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+<div class="form-group col-md-12  ">
+    <div class="col-md-2 ">
+        <p class="EditAll">Email</p>
+    </div>
+
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group col-md-12  ">
+    <div class="col-md-2 ">
+        <p class="EditAll">Số điện thoại</p>
+    </div>
+
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+
+
+<div class="form-group col-md-12  ">
+    <div class="col-md-2 ">
+        <p class="EditAll">Hình ảnh</p>
+    </div>
+
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control" } })
+
+        <img src="~/Content/Images/@Model.Images" width="100px" />
+        @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+        <input type="file" name="Images" />
+    </div>
+</div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại", "Index")
+</div>
+
+@section Scripts {
+    <script src="//cdn.ckeditor.com/4.16.1/full/ckeditor.js"></script>
+}

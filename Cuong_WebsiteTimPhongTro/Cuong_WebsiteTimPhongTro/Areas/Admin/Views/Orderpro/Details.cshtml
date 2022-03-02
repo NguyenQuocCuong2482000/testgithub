@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Cuong_WebsiteTimPhongTro.Models.OrderDetail>
+@using Cuong_WebsiteTimPhongTro.Models'
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+@{
+    var orderItem = (Orderpro)ViewBag.od;
+}
+<p>
+    Order ID: @orderItem.OrderID
+    <br />
+    Order Date: @orderItem.OrderDate.Value.ToString("dd/MM/yyyy")
+    <br />
+    Customer: @orderItem.Customer.CustomerName
+    <br />
+    Staff: @orderItem.StaffId
+    <br />
+    Status:
+    @if (@orderItem.Status == 0)
+    {
+        <strong>Hợp lệ</strong>
+    }
+    @if (@orderItem.Status == 1)
+    {
+        <strong>Không hợp lệ</strong>
+    }
+    
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Oder_Number
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Images)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            Price*Quantity
+        </th>
+    </tr>
+    @{ int num = 1; double total = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @num @{ num++;}
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <td>
+                <img src="~/Content/Images/@item.Product.Images" width="100px" />
+            </td>
+            <td>
+                @{ var price = String.Format("{0:0,0 VND}", @item.Product.Price);}
+                @price
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @{ var money = String.Format("{0:0,0 VND}", item.Product.Price * item.Quantity);}
+                @{ total = total + (double)(item.Product.Price * item.Quantity);}
+                @money
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+                </td>*@
+        </tr>
+    }
+    <tr>
+        <td colspan="7" align="right">
+            @{ var sumtotal = String.Format("{0:0,0 VND}", total); }
+            Total Money:@sumtotal
+        </td>
+    </tr>
+
+
+</table>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

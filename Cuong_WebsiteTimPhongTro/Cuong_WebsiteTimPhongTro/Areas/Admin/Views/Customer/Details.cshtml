@@ -1,0 +1,80 @@
+﻿@model Cuong_WebsiteTimPhongTro.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin khách hàng</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           <p>Họ tên</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        
+
+        <dt>
+            <p>Số điện thoại</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            <p>Địa chỉ</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        
+
+        <dt>
+            <p>Email</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            <p>Hình ảnh</p>
+        </dt>
+
+        <dd>
+            <img src="~/Content/Images/@Model.image" width="100px" height="100px" />
+        </dd>
+
+
+        <dt>
+            <p>Tên đăng nhập</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            <p>Mật khẩu</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassWord)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

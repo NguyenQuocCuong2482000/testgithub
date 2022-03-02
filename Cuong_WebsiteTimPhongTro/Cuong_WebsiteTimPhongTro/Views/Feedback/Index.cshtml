@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Cuong_WebsiteTimPhongTro.Models.Feedback>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="center-outer">
+    <div class="center-inner">
+
+        <div class="bubbles">
+            <h1>Quản lý phản hồi</h1>
+        </div>
+
+    </div>
+</div>
+<hr />
+@foreach (var item in Model)
+{
+    <tr>
+        <center><b><p>Người cần trợ giúp & phản hồi: @item.Customer.CustomerName</p></b></center>
+    </tr>
+    
+    break;
+}
+<p class="snip_button2">
+    @Html.ActionLink("Tạo phản hồi", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <p>Họ tên</p>
+        </th>
+        @*<th>
+                <p>Nội dung phản hồi</p>
+            </th>*@
+        <th>
+            <p>Hình ảnh</p>
+        </th>
+        <th>
+            <p>Email</p>
+        </th>
+        <th>
+            <p>Số điện thoại</p>
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.FeedbackCustomer)
+                </td>*@
+            <td>
+                <img src="~/Content/Images/@item.Images" width="100px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+
+
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.FeedbackID }) |*@
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.FeedbackID })
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.FeedbackID })*@
+            </td>
+        </tr>
+    }
+
+</table>
